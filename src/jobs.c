@@ -20,7 +20,9 @@ void handle_shell()
 }
 int take_input(char *input, int size)
 {
-    printf(">");
+    char cwd[1024];
+    getcwd(cwd,sizeof(cwd));
+    printf("%s>",cwd);
     if (fgets(input, size, stdin) == NULL)
         return 1;
     input[strcspn(input, "\n")] = 0;
@@ -29,16 +31,6 @@ int take_input(char *input, int size)
     if (strcmp(input, "exit") == 0)
         return 1;
     return 2;
-}
-void handle_wait(int background, int cmd_count)
-{
-    if (!background)
-    {
-        for (int i = 0; i < cmd_count; ++i)
-        {
-            wait(NULL);
-        }
-    }
 }
 void background_process(char *args[][MAX_ARGS],
                         int cmd_count,

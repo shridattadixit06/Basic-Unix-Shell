@@ -44,7 +44,6 @@
             }
             background_process(args,cmd_count,&background);
             exec_commands(args,cmd_count,background);
-            handle_wait(background,cmd_count);
         }
         return 0;
     }
