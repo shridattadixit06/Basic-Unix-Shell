@@ -25,9 +25,12 @@
             int cmd_count=0;
             char *args[MAX_CMD][MAX_ARGS];
 
-            input_status = take_input(input);
-            if(input_status)
+            input_status = take_input(input,INPUT_SIZE);
+            if(input_status == 1)
                 break;
+
+            if(input_status == 0)
+                continue;
 
             handle_pipes(commands,input,&cmd_count);
 
@@ -35,7 +38,7 @@
             {
                 parse_commands(commands[i],args[i]);
             }   
-            if(cmd_count==1 && handle_builtins(args))
+            if(cmd_count==1 && handle_builtins(args[0]))
             {
                 continue;
             }

@@ -5,11 +5,14 @@
 #include <signal.h>
 #include "executor.h"
 #include "redirect.h"
+#include <stdlib.h>
 
 #define MAX_CMD 10
 #define MAX_ARGS 10
 
-void exec_commands(char **args[][10], int cmd_count, int background)
+void exec_commands(char *args[][MAX_ARGS],
+                   int cmd_count,
+                   int background)
 {
     int prev_fd = -1;
     for(int i=0;i<cmd_count;++i)

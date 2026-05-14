@@ -6,9 +6,11 @@
 
 int handle_builtins(char **args)
 {
-    if(strcmp(args[0][0],"cd")==0)
+    if(args[0] == NULL)
+        return 0;
+    if(strcmp(args[0], "cd")==0)
             {
-                if(args[0][1]==NULL)
+                if(args[1]==NULL)
                 {
                     char *home = getenv("HOME");
                     if(home==NULL)
@@ -25,7 +27,7 @@ int handle_builtins(char **args)
                 }
                 else
                 {
-                    if(chdir(args[0][1]) != 0)
+                    if(chdir(args[1]) != 0)
                     {
                             perror("cd failed");
                         }

@@ -3,12 +3,12 @@
 #include <string.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include "parser.h"
+#include "redirect.h"
 
 #define MAX_CMD 10
 #define MAX_ARGS 10
 
-void handle_redirection(char **args, int *i)
+void handle_redirection(char *args[][MAX_ARGS], int *i)
 {
     for (int j = 0; j < MAX_ARGS && args[*i][j] != NULL; ++j)
     {
