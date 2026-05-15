@@ -6,6 +6,7 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <stdlib.h>
 
 void clear_cache()
 {
@@ -21,8 +22,9 @@ void handle_shell()
 int take_input(char *input, int size)
 {
     char cwd[1024];
+    char *user = getenv("USER");
     getcwd(cwd,sizeof(cwd));
-    printf("%s>",cwd);
+    printf("%s@linuxmint:~%s>",user,cwd);
     if (fgets(input, size, stdin) == NULL)
         return 1;
     input[strcspn(input, "\n")] = 0;

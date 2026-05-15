@@ -24,6 +24,7 @@
             char *commands[MAX_CMD];
             int cmd_count=0;
             char *args[MAX_CMD][MAX_ARGS];
+            char *user = getenv("USER");
 
             input_status = take_input(input,INPUT_SIZE);
             if(input_status == 1)
